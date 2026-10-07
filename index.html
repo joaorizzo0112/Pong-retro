@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PONG</title>
+<meta name="description" content="PONG retro arcade: 6 modos, CPU com 4 níveis, power-ups, 37 conquistas e visual de fliperama com textura LCD. Instalável como app (PWA).">
+<meta property="og:title" content="PONG — Retro Arcade">
+<meta property="og:description" content="Pong retro com modos, power-ups, conquistas e CPU Insana. Jogue no navegador ou instale como app.">
+<meta name="theme-color" content="#07080c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="cab"><div class="screen" id="scr">
+  <canvas id="c" width="640" height="400"></canvas>
+  <button class="tb" id="pb" title="Pausar" aria-label="Pausar"></button>
+  <div class="pt" id="lg"></div>
+  <div class="ov" id="menu">
+    <h1 id="mt">PONG</h1>
+    <div class="menu" id="items"></div>
+  </div>
+  <div class="ov hide" id="opt"><h2>OPÇÕES</h2><div class="olist" id="olist"></div></div>
+  <div class="ov hide" id="ach"><h2>CONQUISTAS <span class="cnt" id="acnt"></span></h2><div class="grid2" id="alist"></div><button class="btn sel" id="bka" data-back><i class="pxl"></i> VOLTAR</button></div>
+  <div class="ov hide" id="how"><h2>COMO JOGAR</h2>
+    <div class="hrows">
+     <div class="hr"><span>OBJETIVO</span><div class="hv">Rebata a bola e faça o adversário errar. Vence quem fizer os pontos primeiro.</div></div>
+     <div class="hr"><span>CONTROLES</span><div class="hv"><div class="chips"><span>P1 <kbd>W</kbd><kbd>S</kbd></span><span>P2 <kbd>↑</kbd><kbd>↓</kbd></span><span>PAUSA <kbd>ESPAÇO</kbd></span></div><div class="nt">No celular, arraste o dedo na quadra.</div></div></div>
+     <div class="hr"><span>MENUS</span><div class="hv"><div class="chips"><span><kbd>W</kbd><kbd>S</kbd> navega</span><span><kbd>A</kbd><kbd>D</kbd> muda</span><span><kbd>ENTER</kbd> confirma</span><span><kbd>ESC</kbd> volta</span></div></div></div>
+     <div class="hr"><span>DICA</span><div class="hv">A bola acelera a cada rebatida. Bata com a ponta da raquete para mudar o ângulo.</div></div>
+     <div class="hr"><span>MODOS</span><div class="hv"><div class="two"><span><b>TURBO</b> bola veloz</span><span><b>MULTIBOLA</b> 2 bolas</span><span><b>ENCOLHE</b> raquetes menores</span><span><b>PAREDÃO</b> solo, 3 vidas</span><span class="full"><b>SOBREVIVÊNCIA</b> CPU cada vez mais forte</span></div></div></div>
+     <div class="hr"><span>POWER-UPS</span><div class="hv"><div class="nt" style="margin:0 0 4px">Ligue nas Opções e bata na caixa com a bola.</div><div class="two"><span class="pu"><i>G</i>raquete grande</span><span class="pu"><i>L</i>bola lenta</span><span class="pu"><i>I</i>inverte o rival</span><span class="pu"><i>E</i>encolhe o rival</span></div></div></div>
+    </div>
+    <div class="hbtns"><button class="btn sel" id="tutb"><i class="pxr"></i> TREINO JOGÁVEL</button><button class="btn" id="bkh" data-back><i class="pxl"></i> VOLTAR</button></div></div>
+  <div class="ov hide" id="cred"><h2>CRÉDITOS</h2>
+    <div class="hrows">
+     <div class="hr"><span>CRIAÇÃO</span><span class="hv">João · @joaorizzo0112</span></div>
+     <div class="hr"><span>INSPIRAÇÃO</span><span class="hv">Pong, da Atari (1972)<br>criado por Allan Alcorn</span></div>
+     <div class="hr"><span>VISUAL</span><span class="hv">Tela CRT de fliperama com textura LCD estilo Game Boy</span></div>
+     <div class="hr"><span>FONTE</span><span class="hv">Press Start 2P (CodeMan38)</span></div>
+     <div class="hr"><span>TECNOLOGIA</span><span class="hv">HTML, CSS e JavaScript puros · PWA</span></div>
+     <div class="hr"><span>SEU JOGO</span><span class="hv" id="cstats"></span></div>
+    </div>
+    <div class="hbtns"><button class="btn sel" id="gh"><i class="pxr"></i> GITHUB</button><button class="btn" id="bkc" data-back><i class="pxl"></i> VOLTAR</button></div></div>
+  <div class="ov hide" id="end"><div class="endbox">
+    <div class="etag" id="etag"></div><h1 id="emsg"></h1><div class="escore" id="escore"></div><div class="estats" id="estats"></div>
+    <div class="eopts"><div class="eo sel" id="again">JOGAR DE NOVO</div><div class="eo" id="tomenu">MENU</div></div>
+    <div class="sub">W/S ESCOLHE · ESPAÇO CONFIRMA</div></div></div>
+  <div class="ov hide" id="pm"><div class="endbox">
+    <div class="etag">PAUSADO</div>
+    <div class="eopts"><div class="eo sel" id="pm0">CONTINUAR</div><div class="eo" id="pm1">REINICIAR</div><div class="eo" id="pm2">SAIR PARA O MENU</div></div>
+    <div class="sub">W S ESCOLHE · ENTER OK · ESC MENU</div>
+  </div></div>
+  <div class="toast" id="toast"><span style="font-size:20px" id="ti">🏆</span><span><b id="tt"></b><br><span id="td" style="opacity:.75"></span></span></div>
+</div>
+<div class="hint rot">↻ GIRE O APARELHO PARA UMA TELA MAIOR</div></div>
+<script src="js/game.js"></script>
+</body>
+</html>
