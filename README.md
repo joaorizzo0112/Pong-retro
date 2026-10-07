@@ -4,6 +4,8 @@ Um tributo moderno ao clássico **Pong**, lançado pela Atari em 1972, recriado 
 
 O projeto transforma o conceito original em uma experiência completa para navegador, adicionando diferentes modos de jogo, níveis de CPU, power-ups, sistema de conquistas, recordes, controles para teclado e dispositivos móveis e suporte à instalação como **Progressive Web App (PWA)**.
 
+<img width="480" height="300" alt="preview" src="https://github.com/user-attachments/assets/67f9f521-d0b1-4b8d-8775-72769d90b1fb" />
+
 > O GIF de demonstração foi gerado a partir da própria lógica do jogo, utilizando uma partida simulada e renderizada pelo mesmo sistema visual utilizado durante a execução normal.
 
 **Jogue agora:**
